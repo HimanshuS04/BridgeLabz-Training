@@ -50,3 +50,26 @@
 - Understanding how variables and operators work together
 - Ability to create interactive programs with user input
 
+## 📝 December 20, 2025 - Access Modifiers & Operators in C# 🔐
+### What I Learned Today: 💡
+
+🔐 **C# Access Modifiers**
+- Understanding public, private, protected, internal access levels
+- Controlling visibility and accessibility of class members
+- Best practices for encapsulation and data hiding
+
+👨‍💻 **Implementing Access Modifiers**
+- Practical implementation of access modifiers in classes
+- Understanding scope and visibility rules
+- Working with properties and methods with different access levels
+
+➕ **C# Operators - Advanced Practice**
+- Deep dive into different operator types
+- Logical operators, comparison operators, and bitwise operators
+- Practical implementation in real code scenarios
+
+🎯 Key Takeaways:
+- Access modifiers are crucial for object-oriented programming and encapsulation
+- Understanding visibility levels helps write secure and maintainable code
+- Operators are essential tools for building complex logic in C# applications
+
