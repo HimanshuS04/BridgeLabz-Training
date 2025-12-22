@@ -73,3 +73,32 @@
 - Understanding visibility levels helps write secure and maintainable code
 - Operators are essential tools for building complex logic in C# applications
 
+## 📝 December 22, 2025 - Control Flows in C# 🔄
+### What I Learned Today: 💡
+
+🔀 **C# Control Flow Statements**
+- Understanding if, else if, and else conditional statements
+- Switch statements and their usage
+- Ternary operator (? :) for concise conditional expressions
+
+🔁 **Loops in C#**
+- for loops and their structure
+- while and do-while loops
+- Understanding loop control: break and continue statements
+- Nested loops implementation
+
+📋 **Conditional Logic & Decision Making**
+- Combining multiple conditions with logical operators (&&, ||, !)
+- Writing efficient and readable conditional statements
+- Practical application of control flow in problem-solving
+
+💻 **Control Flow Practice Questions**
+- Solved multiple practice questions implementing various control flow patterns
+- Applied loops and conditionals to real-world problem scenarios
+- Enhanced problem-solving skills with iterative approaches
+
+🎯 Key Takeaways:
+- Control flows are fundamental for directing program execution
+- Mastered if-else, switch, and loop constructs for building dynamic programs
+- Practice with diverse problems strengthened conditional logic understanding
+
