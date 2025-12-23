@@ -102,3 +102,20 @@
 - Mastered if-else, switch, and loop constructs for building dynamic programs
 - Practice with diverse problems strengthened conditional logic understanding
 
+## 📝 December 23, 2025 -  C# Arrays 📚
+### What I Learned Today: 💡
+
+🔁 **Control Flow Practice**
+- Solved additional control-flow questions using `if/else`, `switch`, and loops.
+- Practiced nested loops and loop-control (`break`, `continue`).
+
+🧩 **C# Arrays**
+- Learned array declaration, initialization, indexing, and `Length`.
+- Practiced iterating arrays with `for` and `foreach`, and basic operations (access, modify, simple sorting).
+- Implemented small problems reading input with `Console.ReadLine()` and storing values in arrays.
+
+🎯 **Key Takeaways:**
+- Reinforced conditional logic and loop patterns.
+- Gained familiarity with arrays and common array manipulations.
+
+
