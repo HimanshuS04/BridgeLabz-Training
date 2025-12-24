@@ -1,7 +1,7 @@
 using System;
 class ReverseNumber
 {
-    public static void Main(string[] args)
+    static void Main(string[] args)
     {
         Console.WriteLine("Enter the number: ");
         int n = Convert.ToInt32(Console.ReadLine());

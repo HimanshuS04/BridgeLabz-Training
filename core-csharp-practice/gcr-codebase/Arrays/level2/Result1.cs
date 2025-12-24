@@ -1,7 +1,7 @@
 using System;
 class Result1
 {
-    public static void Main(string[] args)
+    static void Main(string[] args)
     {
         Console.WriteLine("Enter number of students: ");
         int n = Convert.ToInt32(Console.ReadLine());

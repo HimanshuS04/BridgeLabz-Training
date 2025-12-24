@@ -1,7 +1,7 @@
 using System;
 class BMI1
 {
-    public static void Main(string[] args)
+    static void Main(string[] args)
     {
         Console.WriteLine("Enter the number of persons: ");
         int n = Convert.ToInt32(Console.ReadLine());

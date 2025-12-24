@@ -1,7 +1,7 @@
 using System;
 class YoungestTallest
 {
-    public static void Main(string[] args)
+    static void Main(string[] args)
     {
         int[] ages = new int[3];
         int[] heights = new int[3];
