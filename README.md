@@ -118,4 +118,17 @@
 - Reinforced conditional logic and loop patterns.
 - Gained familiarity with arrays and common array manipulations.
 
+## 📝 December 24, 2025 - Methods in C# 🔧
+### What I Learned Today: 💡
+
+- **User-Defined Methods**: Declaring and invoking custom methods to organize code.
+- **Using Methods Multiple Times**: Reusability to avoid repetition and improve maintainability.
+- **Making Methods More Dynamic**: Parameters, return values, and overloading to handle varied inputs.
+- **Recursive Methods**: Functions that call themselves for problems like factorials and tree traversal.
+- **Static Methods in C#**: Class-level methods that don't require an instance.
+- **.NET Standard Library Methods**: Using built-in libraries to perform common tasks.
+- **System.Math Class in C#**: Built-in math operations like `Math.Abs`, `Math.Pow`, `Math.Sqrt`.
+
+I also practiced additional array questions to reinforce earlier array lessons.
+
 
