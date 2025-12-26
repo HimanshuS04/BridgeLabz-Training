@@ -131,4 +131,24 @@
 
 I also practiced additional array questions to reinforce earlier array lessons.
 
+## 📝 December 26, 2025 - Strings & Exceptions ✨
+### What I Learned Today: 💡
+
+🧵 **Strings in C#**
+- Learned string manipulation, interpolation, and common methods (`Length`, `Substring`, `IndexOf`, `Replace`, `Split`).
+- Practiced formatting, parsing, and immutability concepts.
+
+⚠️ **Exceptions**
+- Understood `try`/`catch`/`finally`, creating custom exceptions, and best practices for error handling.
+- Practiced throwing and catching exceptions to make programs robust.
+
+💻 **Practice**
+- Implemented small programs handling string processing and exception-safe input parsing.
+- Wrote sample runs to validate behavior.
+
+🎯 **Key Takeaways:**
+- Strings are powerful but require careful handling; exceptions make code resilient.
+- Completed hands-on programs combining both topics.
+
+
 
