@@ -150,5 +150,74 @@ I also practiced additional array questions to reinforce earlier array lessons.
 - Strings are powerful but require careful handling; exceptions make code resilient.
 - Completed hands-on programs combining both topics.
 
+## 📝 December 27, 2025 - String Problems & Handling 🧵
+### What I Learned Today: 💡
+
+📝 **String Problems**
+- Solved multiple problems focused on string manipulation and processing.
+- Practiced string pattern matching, searching, and text transformations.
+
+🔤 **String Handling Techniques**
+- Learned various approaches to handle strings efficiently.
+- Understanding string concatenation, comparison, and trimming.
+- Practiced edge cases and input validation with strings.
+
+⚙️ **Built-in String Methods**
+- Explored advanced string methods: `ToUpper()`, `ToLower()`, `Trim()`, `Contains()`, `StartsWith()`, `EndsWith()`.
+- Practiced `Split()`, `Join()`, `Replace()` for string parsing and manipulation.
+- Utilized `Substring()`, `IndexOf()`, `LastIndexOf()` for character and substring operations.
+
+💻 **Practice**
+- Implemented practical string processing programs.
+- Solved real-world string manipulation scenarios.
+
+🎯 **Key Takeaways:**
+- Built confidence in string manipulation and handling.
+- Mastered built-in methods for efficient string operations.
+- Enhanced problem-solving skills with string-focused challenges.
+
+## 📝 December 28, 2025 - Extra String Problems & Practice 🌟
+### What I Learned Today: 💡
+
+🔁 **Additional String Problems**
+- Solved extra practice problems on string manipulation.
+- Focused on complex string scenarios and edge cases.
+- Strengthened understanding of string methods through repetition.
+
+🧩 **String Algorithm Problems**
+- Practiced string reversal, palindrome checking, and anagram detection.
+- Worked on string concatenation and splitting problems.
+- Implemented solutions for character frequency counting and pattern matching.
+
+💪 **Reinforcement & Mastery**
+- Consolidated knowledge of string handling from previous session.
+- Practiced combining multiple string methods for complex problems.
+- Built muscle memory for common string operations.
+
+🎯 **Key Takeaways:**
+- Extra practice deepened expertise in string manipulation.
+- Developed ability to solve diverse and complex string problems.
+
+## 📝 December 29, 2025 - OOP Basics & Problem Solving 🏗️
+### What I Learned Today: 💡
+
+🏛️ **Object-Oriented Programming (OOP) Basics**
+- Learned fundamental OOP concepts and principles
+- Understanding classes, objects, and their relationships
+- Introduction to core OOP pillars: Encapsulation, Inheritance, Polymorphism, and Abstraction
+
+🎯 **Scenario-Based Problems**
+- Applied previous knowledge to solve real-world problem scenarios
+- Practiced designing classes and objects for specific use cases
+
+
+💻 **Hands-On Practice**
+- Worked on multiple scenario-based problems combining earlier C# concepts
+- Reinforced understanding of variables, methods, and control flow 
+
+🎯 **Key Takeaways:**
+- OOP provides a powerful framework for organizing and structuring code
+- Scenario-based problems help bridge theoretical knowledge with practical application
+
 
 
