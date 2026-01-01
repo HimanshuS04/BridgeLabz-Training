@@ -19,8 +19,11 @@ class Customer
                     return;
                 }
             }
-            Console.WriteLine("Account not found or inactive. Deposit failed.");
         }
+            Console.WriteLine("Account not found or inactive. Deposit failed.");
+            return;
+
+
         
     }
 
@@ -48,6 +51,8 @@ class Customer
                 return;
             }
         }
+        Console.WriteLine("Account not found or inactive. Withdrawal failed.");
+
     }
     public void CheckBalance(Bank bank, int accountNo)
     {
@@ -59,10 +64,10 @@ class Customer
                 Console.WriteLine("Current balance: " + bank.accountDetails[i,1]);
                 return;
             }
-            Console.WriteLine("Account not found or inactive. Contact Bank");
-            return;
 
         }
+         Console.WriteLine("Account not found or inactive. Contact Bank");
+
     }
 
 

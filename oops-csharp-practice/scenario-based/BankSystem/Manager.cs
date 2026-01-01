@@ -2,25 +2,29 @@ using System;
 class Manager
 {
    public void CreateAccount(Bank bank, int accountNo, string name, double initialDeposit)
-{
-    if (initialDeposit >= bank.minBalance)
     {
-        bank.accountCount++;
+        if (initialDeposit < bank.minBalance)
+        {
+            Console.WriteLine("Initial deposit must be at least " + bank.minBalance);
+            return;
+        }
 
-        int index = bank.accountCount - 1;
+        for (int i = 0; i < bank.accountCount; i++)
+        {
+            if (!bank.isActive[i])
+            {
+                bank.accountDetails[i, 0] = accountNo;
+                bank.accountDetails[i, 1] = initialDeposit;
+                bank.accountName[i] = name;
+                bank.isActive[i] = true;
 
-        bank.accountDetails[index, 0] = accountNo;
-        bank.accountName[index] = name;
-        bank.accountDetails[index, 1] = initialDeposit;
-        bank.isActive[index] = true;
+                Console.WriteLine("Account created successfully for " + name);
+                return;
+            }
+        }
 
-        Console.WriteLine("Account created successfully for " + name);
+        Console.WriteLine("Account limit reached. Cannot create more accounts.");
     }
-    else
-    {
-        Console.WriteLine("Initial deposit must be at least the minimum balance of " + bank.minBalance);
-    }
-}
 
 
     public void CloseAccount(Bank bank, int accountNo)
@@ -31,7 +35,6 @@ class Manager
             {
                 bank.isActive[i] = false;
                 Console.WriteLine("Account number " + accountNo + " has been closed.");
-                bank.accountCount--;
                 return;
             }
         }

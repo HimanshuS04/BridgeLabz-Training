@@ -17,8 +17,8 @@ class Bank
         {1006, 4200},
         {1007, 15000},
         {1008, 6200},
-        {1009, 8700},
-        {1010, 2500}
+        {0,0},
+        {0,0}
     };
 
     public string[] accountName = new string[10]
@@ -31,8 +31,8 @@ class Bank
         "Neha",
         "Amit",
         "Pooja",
-        "Vikas",
-        "Ritu"
+        "",
+        ""
     };
 
     public bool[] isActive = new bool[10]
@@ -45,8 +45,8 @@ class Bank
         true,
         true,
         true,
-        true,
-        true
+        false,
+        false
     };
 
 
