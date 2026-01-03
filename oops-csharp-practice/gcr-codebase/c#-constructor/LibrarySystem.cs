@@ -33,6 +33,6 @@ class EBook : LibrarySystem
         eb.SetAuthor("John");
 
         eb.DisplayEBook();
-        Console.WriteLine("Author: " + eb.GetAuthor());
+        Console.WriteLine("Author:" + eb.GetAuthor());
     }
 }

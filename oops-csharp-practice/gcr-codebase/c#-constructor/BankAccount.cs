@@ -29,7 +29,7 @@ class SavingsAccount : BankAccount
     {
         SavingsAccount sa = new SavingsAccount();
         sa.accountNumber = 12345;
-        sa.accountHolder = "Rahul";
+        sa.accountHolder = "Rahul Singh";
         sa.SetBalance(20000);
 
         sa.DisplayAccount();
