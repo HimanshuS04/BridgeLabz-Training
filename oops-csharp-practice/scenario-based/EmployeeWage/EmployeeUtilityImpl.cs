@@ -21,23 +21,36 @@ class EmployeeUtilityImpl : IEmployee
             Employee.SetAttendance(false);
     }
 
-    public void CalculateDailyWage()
+   public void CalculateDailyWage()
+    {
+        const int FullTime = 8;
+        const int WageHour = 20;
+        if (!Employee.GetAttendance())
         {
-            Random random = new Random();
-            int empType = random.Next(0, 3); 
-
-            int workingHours = 0;
-
-            if (empType == 1)
-            {
-                workingHours = FullTime;
-            }
-            else if (empType == 2)
-            {
-                workingHours = random.Next(1, FullTime);
-            }
-
-            Employee.SetWorkingHours(workingHours);
-            Employee.SetDailyWage(workingHours * WageHour);
+            Employee.SetWorkingHours(0);
+            Employee.SetDailyWage(0);
+            Employee.SetWorkType("Absent");
+            return;
         }
+
+        Random random = new Random();
+        int workType = random.Next(0, 2);
+
+        if (workType == 0)
+        {
+
+            Employee.SetWorkType("Full Time");
+            Employee.SetWorkingHours(FullTime);
+            Employee.SetDailyWage(FullTime * WageHour);
+        }
+        else
+        {
+
+            int partTimeHours = random.Next(1, 8); 
+
+            Employee.SetWorkType("Part Time");
+            Employee.SetWorkingHours(partTimeHours);
+            Employee.SetDailyWage(partTimeHours * WageHour + FullTime * WageHour);
+        }
+    }
 }
