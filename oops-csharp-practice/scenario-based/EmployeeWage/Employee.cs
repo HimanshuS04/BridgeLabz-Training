@@ -7,7 +7,8 @@ public class Employee
 
     private bool IsPresent{get; set;}
 
-    private double DailyWage{get; set;}
+    private int WorkingHours { get; set; }
+    private double DailyWage { get; set; }
 
     public void SetEmployeeID(int id)
     {
@@ -26,12 +27,26 @@ public class Employee
     }
 
     public bool GetAttendance()
-        {
+    {
             return IsPresent;
-        }
+    }
+
+    public void SetWorkingHours(int hours)
+    {
+        WorkingHours = hours;
+    }
+
+    public void SetDailyWage(double wage)
+    {
+        DailyWage = wage;
+    }
+
     public override string ToString()
     {
-       string status = IsPresent ? "Present" : "Absent";
-       return $"ID: {EmployeeId}, Name: {EmployeeName}, Status: {status}";
+        return "ID: " + EmployeeId +"      "+
+            " Name: " + EmployeeName +"      "+
+            " Present: " + IsPresent +"      "+
+            " Hours: " + WorkingHours +"      "+
+            " Wage: " + DailyWage;
     }
 }

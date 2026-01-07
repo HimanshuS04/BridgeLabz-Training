@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 public sealed class EmployeeMenu
 {
     private IEmployee EmployeeService = new EmployeeUtilityImpl();
@@ -8,13 +7,13 @@ public sealed class EmployeeMenu
     {
         Employee[] employees = new Employee[10];
 
-            employees[0] = CreateEmployee(101, "Arpit");
+            employees[0] = CreateEmployee(101, "Rahul");
             employees[1] = CreateEmployee(102, "Aman");
             employees[2] = CreateEmployee(103, "Neha");
             employees[3] = CreateEmployee(104, "Priya");
             employees[4] = CreateEmployee(105, "Vikas");
             employees[5] = CreateEmployee(106, "Anjali");
-            employees[6] = CreateEmployee(107, "Rohit Sharma");
+            employees[6] = CreateEmployee(107, "Rohit");
             employees[7] = CreateEmployee(108, "Pooja");
             employees[8] = CreateEmployee(109, "Karan");
             employees[9] = CreateEmployee(110, "Sneha");
@@ -23,6 +22,7 @@ public sealed class EmployeeMenu
             {
                 EmployeeService.SetEmployee(emp);
                 EmployeeService.CheckAttendance();
+                EmployeeService.CalculateDailyWage();
             }
 
         foreach (Employee emp in employees)
