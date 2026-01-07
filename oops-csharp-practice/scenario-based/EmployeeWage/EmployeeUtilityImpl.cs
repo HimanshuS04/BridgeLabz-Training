@@ -1,56 +1,54 @@
 using System;
+
 class EmployeeUtilityImpl : IEmployee
 {
-    private Employee Employee;
+    private Employee employee;
 
-    private const int WageHour = 20;
-    private const int FullTime = 8;
-    
+    private const int WagePerHour = 20;
+    private const int FullTimeHours = 8;
+
+    private Random random = new Random();
+
     public void SetEmployee(Employee employee)
     {
-        Employee = employee;
+        this.employee = employee;
     }
+
     public void CheckAttendance()
     {
-        Random random = new Random();
-        int attendance = random.Next(0, 2); // 0 or 1
+        int attendance = random.Next(0, 2); // 0 = Absent, 1 = Present
 
         if (attendance == 1)
-            Employee.SetAttendance(true);
+            employee.SetAttendance(true);
         else
-            Employee.SetAttendance(false);
+            employee.SetAttendance(false);
     }
 
-   public void CalculateDailyWage()
+    public void CalculateDailyWage()
     {
-        const int FullTime = 8;
-        const int WageHour = 20;
-        if (!Employee.GetAttendance())
+        if (!employee.GetAttendance())
         {
-            Employee.SetWorkingHours(0);
-            Employee.SetDailyWage(0);
-            Employee.SetWorkType("Absent");
+            employee.SetWorkingHours(0);
+            employee.SetDailyWage(0);
+            employee.SetWorkType("Absent");
             return;
         }
 
-        Random random = new Random();
-        int workType = random.Next(0, 2);
+        int workType = random.Next(0, 2); // 0 = Full Time, 1 = Part Time
 
         if (workType == 0)
         {
-
-            Employee.SetWorkType("Full Time");
-            Employee.SetWorkingHours(FullTime);
-            Employee.SetDailyWage(FullTime * WageHour);
+            employee.SetWorkType("Full Time");
+            employee.SetWorkingHours(FullTimeHours);
+            employee.SetDailyWage(FullTimeHours * WagePerHour);
         }
         else
         {
+            int partTimeHours = random.Next(1, FullTimeHours);
 
-            int partTimeHours = random.Next(1, 8); 
-
-            Employee.SetWorkType("Part Time");
-            Employee.SetWorkingHours(partTimeHours);
-            Employee.SetDailyWage(partTimeHours * WageHour + FullTime * WageHour);
+            employee.SetWorkType("Part Time");
+            employee.SetWorkingHours(partTimeHours);
+            employee.SetDailyWage(partTimeHours * WagePerHour);
         }
     }
 }
