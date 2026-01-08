@@ -1,54 +1,96 @@
 using System;
 
-class EmployeeUtilityImpl : IEmployee
+public class EmployeeUtilityImpl : IEmployee
 {
-    private Employee employee;
+    private Employee Employee;
+    private Random random = new Random();
 
     private const int WagePerHour = 20;
     private const int FullTimeHours = 8;
+    private const int PartTimeHours = 8;
 
-    private Random random = new Random();
-
-    public void SetEmployee(Employee employee)
+    public Employee[] CreateEmployees()
     {
-        this.employee = employee;
+        return new Employee[]
+        {
+            new Employee(101, "Rahul"),
+            new Employee(102, "Aman"),
+            new Employee(103, "Neha"),
+            new Employee(104, "Priya"),
+            new Employee(105, "Vikas"),
+            new Employee(106, "Anjali"),
+            new Employee(107, "Rohit"),
+            new Employee(108, "Pooja"),
+            new Employee(109, "Karan"),
+            new Employee(110, "Sneha")
+        };
+    }
+
+    public void SetEmployee(Employee Employee)
+    {
+        this.Employee = Employee;
     }
 
     public void CheckAttendance()
     {
-        int attendance = random.Next(0, 2); // 0 = Absent, 1 = Present
-
-        if (attendance == 1)
-            employee.SetAttendance(true);
-        else
-            employee.SetAttendance(false);
+        int attendance = random.Next(0, 2);
+        Employee.SetAttendance(attendance == 1);
     }
 
+    // UC2 + UC3 + UC4 
     public void CalculateDailyWage()
     {
-        if (!employee.GetAttendance())
+        if (!Employee.GetAttendance())
         {
-            employee.SetWorkingHours(0);
-            employee.SetDailyWage(0);
-            employee.SetWorkType("Absent");
+            Employee.SetWorkingHours(0);
+            Employee.SetDailyWage(0);
+            Employee.SetWorkType("Absent");
             return;
         }
 
-        int workType = random.Next(0, 2); // 0 = Full Time, 1 = Part Time
-
-        if (workType == 0)
+        int workType = random.Next(1, 3); // 1 = Full Time, 2 = Part Time
+        switch (workType)
         {
-            employee.SetWorkType("Full Time");
-            employee.SetWorkingHours(FullTimeHours);
-            employee.SetDailyWage(FullTimeHours * WagePerHour);
-        }
-        else
-        {
-            int partTimeHours = random.Next(1, FullTimeHours);
+            case 1:
+                Employee.SetWorkType("Full Time");
+                Employee.SetWorkingHours(FullTimeHours);
+                break;
 
-            employee.SetWorkType("Part Time");
-            employee.SetWorkingHours(partTimeHours);
-            employee.SetDailyWage(partTimeHours * WagePerHour);
+            case 2:
+                Employee.SetWorkType("Part Time");
+                Employee.SetWorkingHours(PartTimeHours);
+                break;
+
+            default:
+                Employee.SetWorkType("Absent");
+                Employee.SetWorkingHours(0);
+                break;
         }
+
+        Employee.SetDailyWage(Employee.GetWorkingHours() * WagePerHour);
+    }
+
+    // UC5 + UC6
+    public void CalculateMonthlyWage()
+    {
+        int totalHours = 0;
+        int totalDays = 0;
+        int totalWage = 0;
+
+        while (totalHours < 100 && totalDays < 20)
+        {
+            CheckAttendance();
+
+            if (!Employee.GetAttendance())
+                continue;
+
+            CalculateDailyWage();
+
+            totalHours += Employee.GetWorkingHours();
+            totalWage += Employee.GetDailyWage();
+            totalDays++;
+        }
+
+        Employee.SetMonthlyWage(totalWage);
     }
 }

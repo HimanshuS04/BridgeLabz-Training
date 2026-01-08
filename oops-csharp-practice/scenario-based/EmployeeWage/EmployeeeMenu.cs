@@ -1,40 +1,25 @@
 using System;
 
-public sealed class EmployeeMenu
+public class EmployeeMenu
 {
-    private IEmployee employeeService = new EmployeeUtilityImpl();
-    private Employee[] employees;
-
-    public EmployeeMenu()
-    {
-        employees = new Employee[10];
-
-        employees[0] = CreateEmployee(101, "Rahul");
-        employees[1] = CreateEmployee(102, "Aman");
-        employees[2] = CreateEmployee(103, "Neha");
-        employees[3] = CreateEmployee(104, "Priya");
-        employees[4] = CreateEmployee(105, "Vikas");
-        employees[5] = CreateEmployee(106, "Anjali");
-        employees[6] = CreateEmployee(107, "Rohit");
-        employees[7] = CreateEmployee(108, "Pooja");
-        employees[8] = CreateEmployee(109, "Karan");
-        employees[9] = CreateEmployee(110, "Sneha");
-    }
+    EmployeeUtilityImpl Service = new EmployeeUtilityImpl();
+    Employee[] Employees;
 
     public void MainMenu()
     {
-        int choice;
+        Employees = Service.CreateEmployees();
 
+        int choice;
         do
         {
-            Console.WriteLine("\n===== Employee Wage System =====");
+            Console.WriteLine("     Employee Wage System ");
             Console.WriteLine("1. Check Attendance");
             Console.WriteLine("2. Calculate Daily Wage");
-            Console.WriteLine("3. Display Employees");
+            Console.WriteLine("3. Calculate Monthly Wage");
             Console.WriteLine("4. Exit");
-            Console.Write("Enter your choice: ");
+            Console.Write("Enter choice: ");
 
-            choice = Convert.ToInt32(Console.ReadLine());
+            choice = int.Parse(Console.ReadLine());
 
             switch (choice)
             {
@@ -47,55 +32,48 @@ public sealed class EmployeeMenu
                     break;
 
                 case 3:
-                    DisplayEmployees();
-                    break;
-
-                case 4:
-                    Console.WriteLine("Exiting Application...");
-                    break;
-
-                default:
-                    Console.WriteLine("Invalid Choice! Try again.");
+                    CalculateMonthlyWage();
                     break;
             }
-
-        } while (choice != 4);
-    }
-
-    private void CheckAttendance()
-    {
-        foreach (Employee emp in employees)
-        {
-            employeeService.SetEmployee(emp);
-            employeeService.CheckAttendance();
         }
-        Console.WriteLine("Attendance Checked Successfully.");
+        while (choice != 4);
     }
 
-    private void CalculateDailyWage()
+    void CheckAttendance()
     {
-        foreach (Employee emp in employees)
+        foreach (Employee emp in Employees)
         {
-            employeeService.SetEmployee(emp);
-            employeeService.CalculateDailyWage();
+            Service.SetEmployee(emp);
+            Service.CheckAttendance();
         }
-        Console.WriteLine("Daily Wage Calculated Successfully.");
+        Display();
     }
 
-    private void DisplayEmployees()
+    void CalculateDailyWage()
+    {
+        foreach (Employee emp in Employees)
+        {
+            Service.SetEmployee(emp);
+            Service.CheckAttendance();
+            Service.CalculateDailyWage();
+        }
+        Display();
+    }
+
+    void CalculateMonthlyWage()
+    {
+        foreach (Employee emp in Employees)
+        {
+            Service.SetEmployee(emp);
+            Service.CalculateMonthlyWage();
+        }
+        Display();
+    }
+
+    void Display()
     {
         Console.WriteLine("\n---- Employee Details ----");
-        foreach (Employee emp in employees)
-        {
+        foreach (Employee emp in Employees)
             Console.WriteLine(emp);
-        }
-    }
-
-    private Employee CreateEmployee(int id, string name)
-    {
-        Employee emp = new Employee();
-        emp.SetEmployeeID(id);
-        emp.SetEmployeeName(name);
-        return emp;
     }
 }
