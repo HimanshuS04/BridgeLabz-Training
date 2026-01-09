@@ -1,16 +1,19 @@
-class ProcessNode
+using System;
+
+class ClassNode
 {
     public int pid, burst;
-    public ProcessNode next;
+    public ClassNode next;
 }
 
 class RoundRobin
 {
-    ProcessNode head;
+    ClassNode head;
 
     public void AddProcess(int pid, int burst)
     {
-        ProcessNode node = new ProcessNode { pid = pid, burst = burst };
+        ClassNode node = new ClassNode { pid = pid, burst = burst };
+
         if (head == null)
         {
             head = node;
@@ -18,7 +21,7 @@ class RoundRobin
             return;
         }
 
-        ProcessNode temp = head;
+        ClassNode temp = head;
         while (temp.next != head)
             temp = temp.next;
 
@@ -28,12 +31,45 @@ class RoundRobin
 
     public void Simulate(int tq)
     {
-        ProcessNode temp = head;
+        if (head == null)
+        {
+            Console.WriteLine("No processes to execute.");
+            return;
+        }
+
+        ClassNode temp = head;
+
         do
         {
             Console.WriteLine("Executing P" + temp.pid);
+
             temp.burst -= tq;
+            if (temp.burst < 0)
+                temp.burst = 0;
+
+            Console.WriteLine("Remaining Burst: " + temp.burst);
+
             temp = temp.next;
+
         } while (temp != head);
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        RoundRobin rr = new RoundRobin();
+
+        rr.AddProcess(1, 10);
+        rr.AddProcess(2, 8);
+        rr.AddProcess(3, 6);
+
+        Console.Write("Enter Time Quantum: ");
+        int tq = int.Parse(Console.ReadLine());
+
+        rr.Simulate(tq);
+
+        Console.WriteLine("Execution completed.");
     }
 }

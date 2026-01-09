@@ -1,21 +1,25 @@
-class TextNode
+using System;
+
+class ClassNode
 {
     public string text;
-    public TextNode prev, next;
+    public ClassNode prev, next;
 }
 
 class TextEditor
 {
-    TextNode current;
+    ClassNode current;
 
     public void AddState(string t)
     {
-        TextNode node = new TextNode { text = t };
+        ClassNode node = new ClassNode { text = t };
+
         if (current != null)
         {
             current.next = node;
             node.prev = current;
         }
+
         current = node;
     }
 
@@ -35,5 +39,36 @@ class TextEditor
     {
         if (current != null)
             Console.WriteLine("Current Text: " + current.text);
+        else
+            Console.WriteLine("Editor is empty.");
+    }
+}
+
+class Program   
+{
+    static void Main(string[] args)
+    {
+        TextEditor editor = new TextEditor();
+
+        editor.AddState("Hello");
+        editor.Display();
+
+        editor.AddState("Hello World");
+        editor.Display();
+
+        editor.AddState("Hello World!");
+        editor.Display();
+
+        Console.WriteLine("\nUndo:");
+        editor.Undo();
+        editor.Display();
+
+        Console.WriteLine("\nUndo:");
+        editor.Undo();
+        editor.Display();
+
+        Console.WriteLine("\nRedo:");
+        editor.Redo();
+        editor.Display();
     }
 }
