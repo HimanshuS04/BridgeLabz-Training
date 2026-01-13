@@ -1,27 +1,27 @@
 using System;
 class Movie
 {
-    private string title;
-    private string time;
+    private string Title;
+    private string Time;
 
-    public void SetTitle(string title)
+    public void SetTitle(string Title)
     {
-        this.title=title;
+        this.Title=Title;
     }
     public string GetTitle()
     {
-        return title;
+        return Title;
     }
-    public void SetTime(string time)
+    public void SetTime(string Time)
     {
-        this.time=time;
+        this.Time=Time;
     }
     public string GetTime()
     {
-        return time;
+        return Time;
     }
     public override string ToString()
     {
-        return $"Title : {title} | Time : {time}";
+        return $"Title : {Title} | Time : {Time}";
     }
 }

@@ -4,39 +4,47 @@ class CinemaUtilityImpl : ICinemaService
 {
     private GlobalLinkedList MovieList = new GlobalLinkedList();
 
-    public bool AddMovie(string title, string time)
+    public bool AddMovie()
     {
-        if (!IsValidTime(time))
+        Console.Write("Enter Movie Title: ");
+        string Title = Console.ReadLine();
+
+        Console.Write("Enter Show Time (HH:MM): ");
+        string Time = Console.ReadLine();
+
+        if (!IsValidTime(Time))
         {
-            Console.WriteLine("Invalid time format");
+            Console.WriteLine("Invalid Time format");
             return false;
         }
 
         Movie movie = new Movie();
-        movie.SetTitle(title);
-        movie.SetTime(time);
+        movie.SetTitle(Title);
+        movie.SetTime(Time);
 
         MovieList.AddLast(movie);
         return true;
     }
 
-    private bool IsValidTime(string time)
+    private bool IsValidTime(string Time)
     {
-        if (time.Length != 5 || time[2] != ':')
+        if (Time.Length != 5 || Time[2] != ':')
             return false;
 
-        if (!int.TryParse(time.Substring(0, 2), out int hour))
+        if (!int.TryParse(Time.Substring(0, 2), out int hour))
             return false;
 
-        if (!int.TryParse(time.Substring(3, 2), out int minute))
+        if (!int.TryParse(Time.Substring(3, 2), out int minute))
             return false;
 
         return hour >= 0 && hour <= 23 && minute >= 0 && minute <= 59;
     }
 
-    public void SearchMovie(string search)
+    public void SearchMovie()
     {
-        GlobalLinkedList.Node current = MovieList.GetHead();
+        Console.WriteLine("Search movie by name");
+        string search=Console.ReadLine();
+        var current = MovieList.GetHead();
         bool found = false;
         string lowerSearch = search.ToLower();
 
@@ -59,7 +67,7 @@ class CinemaUtilityImpl : ICinemaService
 
     public void DisplayAllMovies()
     {
-        GlobalLinkedList.Node current = MovieList.GetHead();
+        var current = MovieList.GetHead();
 
         if (current == null)
         {
@@ -78,7 +86,7 @@ class CinemaUtilityImpl : ICinemaService
     public void PrintReport()
 {
     int count = 0;
-    GlobalLinkedList.Node temp = MovieList.GetHead();
+    var temp = MovieList.GetHead();
     while (temp != null)
     {
         count++;

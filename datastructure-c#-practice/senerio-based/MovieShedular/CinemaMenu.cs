@@ -18,17 +18,10 @@ class CinemaMenu
             switch (choice)
             {
                 case 1:
-                    Console.Write("Enter Movie Title: ");
-                    string title = Console.ReadLine();
-
-                    Console.Write("Enter Show Time (HH:MM): ");
-                    string time = Console.ReadLine();
-
-                    service.AddMovie(title, time);
+                    service.AddMovie();
                     break;
                 case 2:
-                    Console.Write("Enter keyword: ");
-                    service.SearchMovie(Console.ReadLine());
+                    service.SearchMovie();
                     break;
 
                 case 3:

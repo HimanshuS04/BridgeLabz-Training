@@ -1,7 +1,7 @@
 interface ICinemaService
 {
-    bool AddMovie(string title, string time);
-    void SearchMovie(string search);
+    bool AddMovie();
+    void SearchMovie();
     void DisplayAllMovies();
     void PrintReport();
 }
