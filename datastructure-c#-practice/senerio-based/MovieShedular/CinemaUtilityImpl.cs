@@ -76,22 +76,33 @@ class CinemaUtilityImpl : ICinemaService
     }
 
     public void PrintReport()
+{
+    int count = 0;
+    GlobalLinkedList.Node temp = MovieList.GetHead();
+    while (temp != null)
     {
-        GlobalLinkedList.Node current = MovieList.GetHead();
-
-        if (current == null)
-        {
-            Console.WriteLine("No movies to report.");
-            return;
-        }
-
-        Console.WriteLine("=== Movie Report ===");
-        while (current != null)
-        {
-            Movie movie = (Movie)current.GetData();
-            Console.WriteLine(movie);
-            current = current.GetNext();
-        }
+        count++;
+        temp = temp.GetNext();
     }
+
+    if (count == 0)
+    {
+        Console.WriteLine("No movies to report.");
+        return;
+    }
+    Movie[] report = new Movie[count];
+    temp = MovieList.GetHead();
+    for (int i = 0; i < count; i++)
+    {
+        report[i] = (Movie)temp.GetData(); // cast object to Movie
+        temp = temp.GetNext();
+    }
+    Console.WriteLine("=== Movie Report ===");
+    foreach (Movie movie in report)
+    {
+        Console.WriteLine(movie);
+    }
+}
+
 }
 
