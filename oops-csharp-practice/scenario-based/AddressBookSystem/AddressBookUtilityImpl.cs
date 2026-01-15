@@ -247,4 +247,77 @@ public class AddressBookUtilityImpl : IAddressBook
 
         Console.WriteLine("Contact deleted successfully.");
     }
+     // search within  address book by state
+    public void SearchPersonByState()
+    {
+        if (ContactCount == 0)
+        {
+            Console.WriteLine("No contacts in this Address Book.");
+            return;
+        }
+
+        Console.Write("Enter State Name to search: ");
+        string state = Console.ReadLine() ?? string.Empty;
+
+        bool found = false;
+
+        for (int i = 0; i < ContactCount; i++)
+        {
+            Contact c = Contacts[i];
+            if (c == null) continue;
+
+            if (string.Equals(c.GetState(), state, StringComparison.OrdinalIgnoreCase))
+            {
+                if (!found)
+                {
+                    Console.WriteLine("\nContacts in state '" + state + "' (this Address Book):");
+                    found = true;
+                }
+                Console.WriteLine(c.ToString());
+                Console.WriteLine();
+            }
+        }
+
+        if (!found)
+        {
+            Console.WriteLine("No contacts found in state '" + state + "' in this Address Book.");
+        }
+    }
+
+    // search within address book by city
+    public void SearchPersonByCity()
+    {
+        if (ContactCount == 0)
+        {
+            Console.WriteLine("No contacts in this Address Book.");
+            return;
+        }
+
+        Console.Write("Enter City Name to search: ");
+        string city = Console.ReadLine() ?? string.Empty;
+
+        bool found = false;
+
+        for (int i = 0; i < ContactCount; i++)
+        {
+            Contact c = Contacts[i];
+            if (c == null) continue;
+
+            if (string.Equals(c.GetCity(), city, StringComparison.OrdinalIgnoreCase))
+            {
+                if (!found)
+                {
+                    Console.WriteLine("\nContacts in city '" + city + "' (this Address Book):");
+                    found = true;
+                }
+                Console.WriteLine(c.ToString());
+                Console.WriteLine();
+            }
+        }
+
+        if (!found)
+        {
+            Console.WriteLine("No contacts found in city '" + city + "' in this Address Book.");
+        }
+    }
 }

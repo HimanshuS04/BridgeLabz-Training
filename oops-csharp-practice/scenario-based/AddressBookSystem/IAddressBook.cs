@@ -6,4 +6,6 @@ public interface IAddressBook
     public void EditContact();
     public void DeleteContact();
     public void AddMultipleContacts();
+    void SearchPersonByCity();
+    void SearchPersonByState();
 }
