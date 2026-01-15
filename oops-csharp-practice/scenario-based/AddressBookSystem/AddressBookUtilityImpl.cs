@@ -50,6 +50,32 @@ public class AddressBookUtilityImpl : IAddressBook
         }
     }
 
+    // Method to add multiple contacts
+    public void AddMultipleContacts()
+    {
+        Console.Write("How many contacts do you want to add? ");
+        int numberOfContacts;
+        numberOfContacts=int.Parse(Console.ReadLine());
+
+        if (numberOfContacts <= 0)
+        {
+            Console.WriteLine("Invalid number. Returning to menu.");
+            return;
+        }
+
+        for (int i = 0; i < numberOfContacts; i++)
+        {
+            if (ContactCount >= Contacts.Length)
+            {
+                Console.WriteLine("Address book is full. Cannot add more contacts.");
+                break;
+            }
+
+            Console.WriteLine($"\nEntering details for contact {i + 1}:");
+            AddContact();
+        }
+    }
+
     // Method to display the contacts 
     public void DisplayContact()
     {
