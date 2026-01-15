@@ -33,21 +33,57 @@ public class AddressBookUtilityImpl : IAddressBook
     }
 
     // Method to add new contact
-    public void AddContact()
+     public void AddContact()
     {
-        Contact contact = new Contact();
-
-        TakeContactInput(contact);
-
-        if (ContactCount < Contacts.Length)
-        {
-            Contacts[ContactCount] = contact;
-            ContactCount++;
-        }
-        else
+        if (ContactCount >= Contacts.Length)
         {
             Console.WriteLine("Address book is full. Cannot add more contacts.");
+            return;
         }
+
+        Contact contact = new Contact();
+        TakeContactInput(contact);
+
+        // Check for duplicate before adding
+        if (IsDuplicateContact(contact))
+        {
+            Console.WriteLine("Duplicate entry not added.");
+            return;
+        }
+
+        Contacts[ContactCount] = contact;
+        ContactCount++;
+    }
+     // check if a contact with same first + last name already exists
+    private bool IsDuplicateContact(Contact newContact)
+    {
+        string firstName = newContact.GetFirstName();
+        string lastName  = newContact.GetLastName();
+
+        for (int i = 0; i < ContactCount; i++)
+        {
+            Contact existing = Contacts[i];
+            if (existing == null)
+            {
+                continue;
+            }
+
+            bool firstNameMatches = string.Equals(
+                existing.GetFirstName(),
+                firstName,
+                StringComparison.OrdinalIgnoreCase);
+
+            bool lastNameMatches = string.Equals(
+                existing.GetLastName(),
+                lastName,
+                StringComparison.OrdinalIgnoreCase);
+
+            if (firstNameMatches && lastNameMatches)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     // Method to add multiple contacts
