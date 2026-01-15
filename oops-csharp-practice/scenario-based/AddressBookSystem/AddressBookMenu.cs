@@ -2,7 +2,7 @@ using System;
 
 public class AddressBookMenu
 {
-    private IAddressBook Utility = new AddressBookUtilityImpl();
+    private AddressBookManager Manager = new AddressBookManager();
 
     public void ShowMenu()
     {
@@ -10,39 +10,65 @@ public class AddressBookMenu
         do
         {
             Console.WriteLine("\nAddress Book Menu");
-            Console.WriteLine("1. Add Contact");
-            Console.WriteLine("2. Add Multiple Contacts");
-            Console.WriteLine("3. Display Contact");
-            Console.WriteLine("4. Edit Contact");
-            Console.WriteLine("5. Delete Contact");
-            Console.WriteLine("6. Exit");
+            Console.WriteLine("1. Create New Address Book");
+            Console.WriteLine("2. Select Address Book");
+            Console.WriteLine("3. Add Contact");
+            Console.WriteLine("4. Add Multiple Contacts");
+            Console.WriteLine("5. Display Contacts");
+            Console.WriteLine("6. Edit Contact");
+            Console.WriteLine("7. Delete Contact");
+            Console.WriteLine("8. Exit");
             Console.Write("Enter your choice: ");
             choice = int.Parse(Console.ReadLine());
 
             switch (choice)
             {
                 case 1:
-                    Utility.AddContact();
+                    Console.Write("Enter Address Book Name: ");
+                    string newName = Console.ReadLine();
+                    Manager.AddAddressBook(newName);
                     break;
+
                 case 2:
-                    Utility.AddMultipleContacts();
+                    Manager.DisplayAddressBookNames();
+                    Console.Write("Enter Address Book Name to select: ");
+                    string nameToSelect = Console.ReadLine();
+                    Manager.SelectAddressBook(nameToSelect);
                     break;
+
                 case 3:
-                    Utility.DisplayContact();
+                    if (!Manager.IsAddressBookSelected()) break;
+                    Manager.GetCurrentAddressBook().AddContact();
                     break;
+
                 case 4:
-                    Utility.EditContact();
+                    if (!Manager.IsAddressBookSelected()) break;
+                    Manager.GetCurrentAddressBook().AddMultipleContacts();
                     break;
+
                 case 5:
-                    Utility.DeleteContact();
+                    if (!Manager.IsAddressBookSelected()) break;
+                    Manager.GetCurrentAddressBook().DisplayContact();
                     break;
+
                 case 6:
-                    Console.WriteLine("Exiting Address Book. Goodbye.");
+                    if (!Manager.IsAddressBookSelected()) break;
+                    Manager.GetCurrentAddressBook().EditContact();
                     break;
+
+                case 7:
+                    if (!Manager.IsAddressBookSelected()) break;
+                    Manager.GetCurrentAddressBook().DeleteContact();
+                    break;
+
+                case 8:
+                    Console.WriteLine("Exiting Address Book System. Goodbye.");
+                    break;
+
                 default:
                     Console.WriteLine("Invalid choice. Please try again.");
                     break;
             }
-        } while (choice != 6);
+        } while (choice != 8);
     }
 }
