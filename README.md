@@ -512,6 +512,279 @@ I also practiced additional array questions to reinforce earlier array lessons.
 - Proper design allows easy extension with new vehicle types and features
 - OOP recap reinforced comprehensive understanding of design principles
 
+## 📝 January 7, 2026 - Linked Lists & Employee Wage OOP Project 🔗
+### What I Learned Today: 💡
+
+🔗 **Linked Lists**
+- Understanding linked list data structure and node-based architecture
+- Learning how nodes contain data and references to next node
+- Practicing linked list operations: insertion, deletion, traversal
+- Exploring advantages of linked lists over arrays (dynamic size, efficient insertion/deletion)
+- Implementing custom linked list class with fundamental operations
+
+💼 **Employee Wage OOP Scenario**
+- Designing an employee wage management system using OOP principles
+- Applied **Encapsulation**: Private fields for employee data with public properties
+- Utilized **Inheritance**: Creating base Employee class with specialized types
+- Implemented **Polymorphism**: Different wage calculation methods for various employee types
+- Leveraged **Abstraction**: Wage calculation interface for flexible implementations
+
+
+🏗️ **Class Design**
+- **Employee Class**: Base class with properties (EmployeeId, Name, Salary, Department)
+- **FullTimeEmployee Class**: Inheriting from Employee with benefits and bonuses
+- **ContractEmployee Class**: Inheriting from Employee with hourly wage calculations
+- **IWageCalculable Interface**: Abstraction for different wage calculation strategies
+- **EmployeeWageManager Class**: Managing employee records using linked list structure
+
+💻 **Hands-On Implementation**
+- Created custom linked list for efficient employee record management
+- Implemented OOP principles in employee wage system
+- Applied polymorphic wage calculations for different employee types
+- Demonstrated dynamic data structure management with linked lists
+- Combined data structures with object-oriented design patterns
+
+🎯 **Key Takeaways:**
+- Linked lists provide efficient dynamic data structure for managing collections
+- Node-based architecture enables flexible insertion and deletion operations
+- OOP principles enhance employee wage system with flexibility and maintainability
+- Combining data structures with OOP creates powerful, scalable solutions
+- Employee wage system demonstrates practical integration of multiple concepts
+
+## 📝 January 8, 2026 - Stack, Queue & Smart Home Automation System 🏠
+### What I Learned Today: 💡
+
+📚 **Stack Theory**
+- Understanding LIFO (Last In First Out) principle
+- Learning stack operations: push, pop, peek, isEmpty
+- Exploring real-world applications: undo/redo, function call stack, expression evaluation
+- Implementing custom stack data structure
+- Practicing stack-based problem solving
+
+📋 **Queue Theory**
+- Understanding FIFO (First In First Out) principle
+- Learning queue operations: enqueue, dequeue, peek, isEmpty
+- Exploring real-world applications: task scheduling, print queue, message passing
+- Implementing custom queue data structure
+- Practicing queue-based problem solving
+
+🏠 **Smart Home Automation System Project**
+- Comprehensive implementation combining data structures with OOP and polymorphism
+- Designing an intelligent home control system with multiple appliances
+
+🔌 **Core Concepts**
+- **Appliance Class**: Abstract base class representing all smart devices
+  - Common properties: brand, model, powerStatus
+  - Abstract methods for device-specific behavior
+  - Protected fields for encapsulation
+
+- **Light Class**: Specialized appliance with brightness control
+  - Inherits from Appliance
+  - Additional properties: brightness level, color temperature
+  - Custom turn-on/turn-off behavior with dimming
+
+- **Fan Class**: Specialized appliance with speed control
+  - Inherits from Appliance
+  - Additional properties: speed level (1-5)
+  - Custom turn-on/turn-off behavior with speed adjustment
+
+- **AC Class**: Specialized appliance with temperature control
+  - Inherits from Appliance
+  - Additional properties: temperature setting, cooling mode
+  - Custom turn-on/turn-off behavior with temperature management
+
+🔌 **IControllable Interface**
+- Defining contract for all controllable devices
+- **TurnOn()**: Turns on the device with specific behavior per appliance type
+- **TurnOff()**: Turns off the device with specific behavior per appliance type
+- Enabling polymorphic control across different device types
+- Flexible device management without type-checking
+
+🎭 **Polymorphism Implementation**
+- **Light TurnOn**: Gradually increases brightness to full intensity
+- **Light TurnOff**: Slowly dims to off for comfort
+- **Fan TurnOn**: Starts at minimum speed, can increase via method
+- **Fan TurnOff**: Gradually decreases speed to prevent sudden stop
+- **AC TurnOn**: Sets temperature and starts cooling mode
+- **AC TurnOff**: Stops cooling and returns to standby mode
+- Different behavior for same method name based on object type
+
+💻 **SmartHome Controller Class**
+- Managing multiple appliances in a collection
+- Using interface references for flexible device control
+- Implementing control logic: turn all on, turn all off, status display
+- Demonstrating polymorphic method calls
+
+💻 **Hands-On Implementation**
+- Created inheritance hierarchy for appliance types
+- Implemented IControllable interface across device classes
+- Designed polymorphic turn-on/turn-off methods with device-specific logic
+- Built SmartHome controller for centralized device management
+- Demonstrated LIFO and FIFO principles in device state management
+- Applied data structures to track device usage history
+
+🎯 **Key Takeaways:**
+- Stack (LIFO) and Queue (FIFO) are fundamental data structures with distinct use cases
+- Polymorphism enables flexible, extensible device control without type checking
+- Interfaces define contracts that allow treating different objects uniformly
+- Inheritance enables code reuse while specialization provides device-specific behavior
+- Smart home system demonstrates practical integration of OOP principles with data structures
+- Proper abstraction design allows easy addition of new appliance types (doorbell, thermostat, etc.)
+
+## 📝 January 9, 2026 - ATM Dispenser & Fitness Tracker + Sorting 💳💪
+### What I Learned Today: 💡
+
+💰 **ATM Dispenser Logic - Greedy Algorithm**
+- **Scenario A**: Dispense ₹880 using notes (₹1, ₹2, ₹5, ₹10, ₹20, ₹50, ₹100, ₹200, ₹500) with minimum count
+  - Greedy approach: Use highest denominations first
+  - Result: 1×₹500 + 1×₹200 + 1×₹100 + 1×₹50 + 1×₹20 + 1×₹10 = 6 notes
+  
+- **Scenario B**: Remove ₹500 note temporarily, recalculate strategy
+  - Updated greedy: 1×₹200 + 3×₹100 + 1×₹50 + 1×₹20 + 1×₹10 = 7 notes
+  - Demonstrates adaptive algorithm design
+
+- **Scenario C**: Fallback mechanism when exact change unavailable
+  - Display alternative combinations or nearest possible amount
+  - Error handling for insufficient denominations
+
+🏃 **FitTrack - Fitness Tracker Project**
+- **UserProfile Class**: Encapsulation of user data (name, age, weight, fitness goals)
+- **Workout Class**: Base class with common properties (date, duration, calories burned)
+- **CardioWorkout Class**: Specialized workout type with heart rate and intensity
+- **StrengthWorkout Class**: Specialized workout type with sets, reps, weights
+- **ITrackable Interface**: Contract for tracking metrics (LogWorkout, GetStats, DisplayProgress)
+- **Polymorphism**: Different calorie calculations for cardio vs strength workouts
+
+📊 **Sorting Theory & Applications**
+- Understanding sorting algorithms: Bubble Sort, Selection Sort, Insertion Sort, Quick Sort, Merge Sort
+- Time complexity analysis: O(n²) vs O(n log n)
+- Practical application: Sorting workout history by date, calories, or duration
+- Using built-in C# Sort() for efficient data organization
+- Sorting UserProfile data by fitness metrics
+
+💻 **Implementation Highlights**
+- ATM logic using greedy algorithm with dynamic denomination handling
+- Fitness tracker polymorphic workout logging and statistics
+- Sorted workout history display by various criteria
+- Fallback strategies for edge cases in both scenarios
+
+🎯 **Key Takeaways:**
+- Greedy algorithms solve ATM dispenser problems efficiently
+- Polymorphism manages different workout types with unified interface
+- Sorting enables meaningful data organization and analysis
+- Adaptive strategies handle constraint changes in real-world systems
+
+## 📝 January 12, 2026 - Search Algorithms & Rod Cutting Scenarios 🔍⚙️
+### What I Learned Today: 💡
+
+🔍 **Linear Search**
+- O(n) time complexity, iterates through each element sequentially
+- Simple but slow for large datasets
+- Best for unsorted data or small collections
+
+🎯 **Binary Search**
+- O(log n) time complexity, divides search space in half each iteration
+- Requires sorted data
+- Much faster for large datasets
+
+💰 **Story 1: Metal Factory Pipe Cutting** 
+- **Scenario A**: Rod length 8, price chart {1→1, 2→5, 3→8, 4→9, 5→10, 6→17, 7→18, 8→20}
+  - Dynamic programming finds best cuts: (2+6) or (1+7) maximize revenue
+  
+- **Scenario B**: Custom order added (e.g., 3.5ft at premium price), recalculate optimal cuts
+  
+- **Scenario C**: Compare optimized vs naive cutting strategy to visualize revenue impact
+
+🪵 **Story 2: Custom Furniture Manufacturing**
+- **Scenario A**: 12ft rod with pricing table, maximize earnings via optimal cuts
+  
+- **Scenario B**: Add waste constraint (10% max waste), modify cutting logic accordingly
+  
+- **Scenario C**: Suggest cuts balancing high revenue AND minimal scrap waste
+
+💻 **Implementation**
+- Applied binary search for price lookup optimization
+- Linear search for constraint validation
+- Dynamic programming for rod cutting solution
+- Polymorphic revenue calculation for different scenarios
+
+🎯 **Key Takeaways:**
+- Binary search drastically improves lookup performance in sorted data
+- Dynamic programming solves rod cutting optimally
+- Constraints drive algorithmic adaptations in real-world manufacturing
+
+## 📝 January 13, 2026 - Big O Notation & List Management Projects 📊
+### What I Learned Today: 💡
+
+⏱️ **Algorithm Runtime Analysis**
+- O(1): Constant time, independent of input size
+- O(n): Linear time, grows with input size
+- O(n²): Quadratic, nested loops
+- O(log n): Binary search efficiency
+- O(n log n): Optimal sorting algorithms
+
+🎬 **CinemaTime – Movie Schedule Manager**
+- **Data Structures**: Two LinkedLists (titles, showtimes)
+- **addMovie(String title, String time)**: Add movie with validation using LinkedList.add()
+- **searchMovie(String keyword)**: Uses `String.contains()` for keyword matching via iteration
+- **displayAllMovies()**: Formatted output combining title + time
+- **Exception Handling**: 
+  - `IndexOutOfBoundsException` for invalid search indices
+  - Custom `InvalidTimeFormatException` for invalid formats (e.g., "25:99")
+- **Array Conversion**: Export LinkedList to array for reports
+
+📚 **BookBuddy – Digital Bookshelf App**
+- **LinkedList**: Stores books as "Title - Author" format
+- **addBook(String title, String author)**: Add with concatenation using LinkedList.add()
+- **sortBooksAlphabetically()**: Collections.sort() for alphabetical order on LinkedList
+- **searchByAuthor(String author)**: Uses `String.split()` to parse format via iteration
+- **Exception Handling**:
+  - Custom `InvalidBookFormatException` for wrong format
+  - Try-catch for empty list operations
+- **Array Export**: Convert LinkedList to array before exporting
+
+💻 **Implementation Highlights**
+- LinkedList efficient insertion/deletion compared to ArrayList
+- String manipulation with split(), contains(), format()
+- Custom exception design and handling
+- Array conversion from LinkedList for report generation
+- Node-based traversal for search and display operations
+
+🎯 **Key Takeaways:**
+- Big O notation guides algorithm selection for performance
+- Lists provide dynamic storage with flexible operations
+- Custom exceptions improve code robustness and clarity
+- String parsing essential for structured data management
+
+## 📝 January 14, 2026 - Address Book System Project 📇
+### What I Learned Today: 💡
+
+📇 **Address Book System Project**
+- Comprehensive contact management application with multiple use cases
+- Applied arrays for efficient contact storage and manipulation
+
+👥 **Core Features**
+- **Contact Class**: Encapsulation of contact data (name, phone, email, address)
+- **addContact()**: Add new contact to array with validation and size management
+- **searchContact(String name)**: Linear search using String.contains() on array
+- **updateContact()**: Modify existing contact information in array
+- **deleteContact()**: Remove contact by shifting array elements
+- **displayAllContacts()**: Show all contacts in formatted output
+- **displayByCategory()**: Filter and display contacts by type
+
+💻 **Implementation Highlights**
+- Array-based contact storage with dynamic resizing capability
+- Polymorphic contact types (PersonalContact, BusinessContact, EmergencyContact)
+- Linear search for contact lookup
+- Array element shifting for deletion operations
+- Category-based filtering via array iteration
+
+🎯 **Key Takeaways:**
+- Arrays provide simple, efficient storage for contact lists
+- Polymorphism handles different contact types uniformly
+- Custom exceptions ensure data integrity
+- Dynamic resizing manages growing contact collections
+
 
 
 
