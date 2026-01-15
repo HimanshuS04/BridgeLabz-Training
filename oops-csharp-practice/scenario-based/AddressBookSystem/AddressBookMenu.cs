@@ -13,7 +13,8 @@ public class AddressBookMenu
             Console.WriteLine("1. Add Contact");
             Console.WriteLine("2. Display Contact");
             Console.WriteLine("3. Edit Contact");
-            Console.WriteLine("4. Exit");
+            Console.WriteLine("4. Delete Contact");
+            Console.WriteLine("5. Exit");
             Console.Write("Enter your choice: ");
             choice=int.Parse(Console.ReadLine());
 
@@ -29,12 +30,15 @@ public class AddressBookMenu
                     Utility.EditContact();
                     break;
                 case 4:
+                    Utility.DeleteContact();
+                    break;
+                case 5:
                     Console.WriteLine("Exiting Address Book. Goodbye.");
                     break;
                 default:
                     Console.WriteLine("Invalid choice. Please try again.");
                     break;
             }
-        } while(choice!=4);
+        } while(choice!=5);
     }
 }

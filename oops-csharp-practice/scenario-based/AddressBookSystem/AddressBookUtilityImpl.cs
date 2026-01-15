@@ -124,6 +124,65 @@ public class AddressBookUtilityImpl : IAddressBook
         TakeContactInput(contactToEdit);
 
         Console.WriteLine("\nContact updated successfully. New details:");
-        Console.WriteLine(contactToEdit.ToString());
+        // Console.WriteLine(contactToEdit.ToString());
+    }
+    // Method to delete an existing contact using FIRST + LAST name
+    public void DeleteContact()
+    {
+        if (ContactCount == 0)
+        {
+            Console.WriteLine("No contacts available to delete.");
+            return;
+        }
+
+        Console.Write("Enter the First Name of the contact to delete: ");
+        string firstNameToDelete = Console.ReadLine();
+
+        Console.Write("Enter the Last Name of the contact to delete: ");
+        string lastNameToDelete = Console.ReadLine();
+
+        int indexToDelete = -1;
+
+        for (int i = 0; i < ContactCount; i++)
+        {
+            Contact c = Contacts[i];
+            if (c == null)
+            {
+                continue;
+            }
+
+            bool firstNameMatches = string.Equals(
+                c.GetFirstName(),
+                firstNameToDelete,
+                StringComparison.OrdinalIgnoreCase);
+
+            bool lastNameMatches = string.Equals(
+                c.GetLastName(),
+                lastNameToDelete,
+                StringComparison.OrdinalIgnoreCase);
+
+            if (firstNameMatches && lastNameMatches)
+            {
+                indexToDelete = i;
+                break;
+            }
+        }
+
+        if (indexToDelete == -1)
+        {
+            Console.WriteLine("Contact with the given first and last name was not found.");
+            return;
+        }
+
+        // Shift elements left to fill the gap
+        for (int i = indexToDelete; i < ContactCount - 1; i++)
+        {
+            Contacts[i] = Contacts[i + 1];
+        }
+
+        Contacts[ContactCount - 1] = null;
+        ContactCount--;
+
+        Console.WriteLine("Contact deleted successfully.");
     }
 }
