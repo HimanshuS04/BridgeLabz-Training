@@ -320,4 +320,58 @@ public class AddressBookUtilityImpl : IAddressBook
             Console.WriteLine("No contacts found in city '" + city + "' in this Address Book.");
         }
     }
+    // method to count of contact in city
+    public void CountPersonsByCity()
+    {
+        if (ContactCount == 0)
+        {
+            Console.WriteLine("No contacts in this Address Book.");
+            return;
+        }
+
+        Console.Write("Enter City Name to get count: ");
+        string city = Console.ReadLine() ?? string.Empty;
+
+        int count = 0;
+
+        for (int i = 0; i < ContactCount; i++)
+        {
+            Contact c = Contacts[i];
+            if (c == null) continue;
+
+            if (string.Equals(c.GetCity(), city, StringComparison.OrdinalIgnoreCase))
+            {
+                count++;
+            }
+        }
+
+        Console.WriteLine("Number of persons in city '" + city + "' in this Address Book: " + count);
+   }
+// method to count number of contact in state
+    public void CountPersonsByState()
+    {
+        if (ContactCount == 0)
+    {
+        Console.WriteLine("No contacts in this Address Book.");
+        return;
+    }
+
+    Console.Write("Enter State Name to get count: ");
+    string state = Console.ReadLine() ?? string.Empty;
+
+    int count = 0;
+
+    for (int i = 0; i < ContactCount; i++)
+    {
+        Contact c = Contacts[i];
+        if (c == null) continue;
+
+        if (string.Equals(c.GetState(), state, StringComparison.OrdinalIgnoreCase))
+        {
+            count++;
+        }
+    }
+
+    Console.WriteLine("Number of persons in state '" + state + "' in this Address Book: " + count);
+    }
 }
