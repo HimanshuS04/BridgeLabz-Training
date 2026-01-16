@@ -1,24 +1,19 @@
-public class BrowserTab
+public class BrowserPage
 {
-    private GlobalLinkedList History= new GlobalLinkedList();
-    private GlobalLinkedList.Node current=null;
-    public GlobalLinkedList GetHistory()
+    private string url;
+
+    public void SetUrl(string url)
     {
-        return History;
+        this.url = url;
     }
 
-    public void SetHistory(GlobalLinkedList History)
+    public string GetUrl()
     {
-        this.History = History;
+        return url;
     }
 
-    public GlobalLinkedList.Node GetCurrent()
+    public override string ToString()
     {
-        return current;
-    }
-
-    public void SetCurrent(GlobalLinkedList.Node current)
-    {
-        this.current = current;
+        return url;
     }
 }

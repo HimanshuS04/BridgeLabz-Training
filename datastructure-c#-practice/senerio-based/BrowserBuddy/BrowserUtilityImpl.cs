@@ -1,40 +1,40 @@
 using System;
+using System.Collections.Generic;
 
 public class BrowserUtilityImpl : IBrowserOperations
 {
-    private BrowserTab currentTab=new BrowserTab();
-    private Stack<BrowserTab> closedTabs=new Stack<BrowserTab>();
-    public void VisitPage()
+    private GlobalLinkedList history= new GlobalLinkedList();
+    private GlobalLinkedList.Node current=null;
+    private Stack<GlobalLinkedList> closedTabs= new Stack<GlobalLinkedList>();
+     public void VisitPage()
     {
-        Console.WriteLine("Enter the url");
-        string url=Console.ReadLine();
-        GlobalLinkedList history = currentTab.GetHistory();
-        GlobalLinkedList.Node current = currentTab.GetCurrent();
+        Console.WriteLine("Enter url");
+        string url= Console.ReadLine();
+        BrowserPage page = new BrowserPage();
+        page.SetUrl(url);
 
-        // Remove forward history if exists
+        // Clear forward history
         if (current != null && current.GetNext() != null)
         {
             current.SetNext(null);
         }
 
-        history.AddLast(url);
+        history.AddLast(page);
 
         if (current == null)
-            currentTab.SetCurrent(history.GetHead());
+            current = history.GetHead();
         else
-            currentTab.SetCurrent(current.GetNext());
+            current = current.GetNext();
 
-        Console.WriteLine("Visited: " + url);
+        Console.WriteLine("Visited: " + page);
     }
 
     public void Back()
     {
-        GlobalLinkedList.Node current = currentTab.GetCurrent();
-
         if (current != null && current.GetPrev() != null)
         {
-            currentTab.SetCurrent(current.GetPrev());
-            Console.WriteLine("Back to: " + currentTab.GetCurrent().GetData());
+            current = current.GetPrev();
+            Console.WriteLine("Back to: " + current.GetData());
         }
         else
         {
@@ -44,12 +44,10 @@ public class BrowserUtilityImpl : IBrowserOperations
 
     public void Forward()
     {
-        GlobalLinkedList.Node current = currentTab.GetCurrent();
-
         if (current != null && current.GetNext() != null)
         {
-            currentTab.SetCurrent(current.GetNext());
-            Console.WriteLine("Forward to: " + currentTab.GetCurrent().GetData());
+            current = current.GetNext();
+            Console.WriteLine("Forward to: " + current.GetData());
         }
         else
         {
@@ -59,8 +57,9 @@ public class BrowserUtilityImpl : IBrowserOperations
 
     public void CloseTab()
     {
-        closedTabs.Push(currentTab);
-        currentTab = new BrowserTab();
+        closedTabs.Push(history);
+        history = new GlobalLinkedList();
+        current = null;
         Console.WriteLine("Tab closed.");
     }
 
@@ -68,19 +67,20 @@ public class BrowserUtilityImpl : IBrowserOperations
     {
         if (closedTabs.Count > 0)
         {
-            currentTab = closedTabs.Pop();
+            history = closedTabs.Pop();
+            current = history.GetHead();
             Console.WriteLine("Tab restored.");
         }
         else
         {
-            Console.WriteLine("No closed tabs to restore.");
+            Console.WriteLine("No tabs to restore.");
         }
     }
 
     public void ShowCurrentPage()
     {
-        if (currentTab.GetCurrent() != null)
-            Console.WriteLine("Current Page: " + currentTab.GetCurrent().GetData());
+        if (current != null)
+            Console.WriteLine("Current Page: " + current.GetData());
         else
             Console.WriteLine("No page opened.");
     }
