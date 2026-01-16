@@ -21,7 +21,8 @@ public class AddressBookMenu
             Console.WriteLine("9. Search Person by State (Current Address Book)");
             Console.WriteLine("10. Count Persons by City (Current Address Book)");
             Console.WriteLine("11. Count Persons by State (Current Address Book)");
-            Console.WriteLine("12. Exit");
+            Console.WriteLine("12. Sort Contacts by Name (Current Address Book)");
+            Console.WriteLine("13. Exit");
             Console.Write("Enter your choice: ");
             choice = int.Parse(Console.ReadLine());
 
@@ -84,8 +85,11 @@ public class AddressBookMenu
                     if (!Manager.IsAddressBookSelected()) break;
                     Manager.GetCurrentAddressBook().CountPersonsByState();
                     break;
-
-                case 12:
+                case 12: 
+                    if (!Manager.IsAddressBookSelected()) break;
+                    Manager.GetCurrentAddressBook().SortContactsByName();
+                    break;
+                case 13:
                     Console.WriteLine("Exiting Address Book System. Goodbye.");
                     break;
 
@@ -93,6 +97,6 @@ public class AddressBookMenu
                     Console.WriteLine("Invalid choice. Please try again.");
                     break;
             }
-        } while (choice != 12);
+        } while (choice != 13);
     }
 }

@@ -374,4 +374,53 @@ public class AddressBookUtilityImpl : IAddressBook
 
     Console.WriteLine("Number of persons in state '" + state + "' in this Address Book: " + count);
     }
+        // Compare two contacts by FirstName, then LastName 
+    private int CompareContactsByName(Contact a, Contact b)
+    {
+    if (a == null && b == null) return 0;
+    if (a == null) return 1;   // nulls go after non-nulls
+    if (b == null) return -1;
+
+    int firstNameCompare = string.Compare(
+        a.GetFirstName(),
+        b.GetFirstName(),
+        StringComparison.OrdinalIgnoreCase);
+
+    if (firstNameCompare != 0)
+    {
+        return firstNameCompare;
+    }
+
+    return string.Compare(
+        a.GetLastName(),
+        b.GetLastName(),
+        StringComparison.OrdinalIgnoreCase);
+}
+
+    //  sort contacts in  address book by Person's name
+    public void SortContactsByName()
+    {
+        if (ContactCount <= 1)
+        {
+        Console.WriteLine("Not enough contacts to sort.");
+        return;
+        }
+
+    // Simple sort on the active part of the array
+    for (int i = 0; i < ContactCount - 1; i++)
+    {
+        for (int j = i + 1; j < ContactCount; j++)
+        {
+            if (CompareContactsByName(Contacts[i], Contacts[j]) > 0)
+            {
+                Contact temp = Contacts[i];
+                Contacts[i] = Contacts[j];
+                Contacts[j] = temp;
+            }
+        }
+    }
+
+    Console.WriteLine("Contacts sorted alphabetically by name in this Address Book.");
+    DisplayContact();  // reuse existing display method
+}
 }
