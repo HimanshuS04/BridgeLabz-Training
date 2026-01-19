@@ -3,8 +3,7 @@ public class ExamMain
 {
     static void Main()
     {
-        ExamUtilityImpl utility = new ExamUtilityImpl();
-        ExamMenu menu = new ExamMenu(utility);
+        ExamMenu menu = new ExamMenu();
         menu.ShowMenu();
     }
 }

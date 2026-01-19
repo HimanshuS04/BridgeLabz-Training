@@ -2,13 +2,7 @@ using System;
 
 public class ExamMenu
 {
-    private ExamUtilityImpl utility;
-
-    public ExamMenu(ExamUtilityImpl utility)
-    {
-        this.utility = utility;
-    }
-
+    private ExamUtilityImpl utility= new ExamUtilityImpl();
     public void ShowMenu()
     {
         while (true)
