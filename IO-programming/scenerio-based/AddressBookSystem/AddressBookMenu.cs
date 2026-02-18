@@ -28,7 +28,9 @@ public class AddressBookMenu
             Console.WriteLine("14. Load Current Address Book from File");
             Console.WriteLine("15. Save Current Address Book to CSV File");
             Console.WriteLine("16. Load Current Address Book from CSV File");
-            Console.WriteLine("17. Exit");
+             Console.WriteLine("17. Save Current Address Book to JSON File"); 
+            Console.WriteLine("18. Load Current Address Book from JSON File"); 
+            Console.WriteLine("19. Exit");
             Console.Write("Enter your choice: ");
 
             string input = Console.ReadLine();
@@ -132,8 +134,17 @@ public class AddressBookMenu
                         if (!Manager.IsAddressBookSelected()) break;
                         Manager.GetCurrentAddressBook().ReadFromCsvFile();
                         break;
+                     case 17: 
+                        if (!Manager.IsAddressBookSelected()) break;
+                        Manager.GetCurrentAddressBook().WriteToJsonFile();
+                        break;
 
-                    case 17:
+                    case 18: 
+                        if (!Manager.IsAddressBookSelected()) break;
+                        Manager.GetCurrentAddressBook().ReadFromJsonFile();
+                        break;
+
+                    case 19:
                         Console.WriteLine("Exiting Address Book System. Goodbye.");
                         exit = true;
                         break;

@@ -17,4 +17,6 @@ public interface IAddressBook
     void ReadFromFile();  
      void WriteToCsvFile();
     void ReadFromCsvFile();
+    void WriteToJsonFile();
+    void ReadFromJsonFile();
 }

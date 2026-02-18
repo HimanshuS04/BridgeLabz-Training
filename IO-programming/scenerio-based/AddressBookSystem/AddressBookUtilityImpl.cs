@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
-
+using System.IO;
+using System.Text.Json;
 public class AddressBookUtilityImpl : IAddressBook
 {
     private List<Contact> Contacts = new List<Contact>();
@@ -620,4 +621,109 @@ public class AddressBookUtilityImpl : IAddressBook
             throw new AddressBookException("Error reading CSV file: " + ex.Message, ex);
         }
     }
+    public void WriteToJsonFile()
+{
+    if (Contacts.Count == 0)
+    {
+        Console.WriteLine("No contacts in this Address Book to save.");
+        return;
+    }
+
+    Console.Write("Enter JSON file name to save (e.g., addressbook.json): ");
+    string fileName = Console.ReadLine();
+
+    if (string.IsNullOrWhiteSpace(fileName))
+    {
+        Console.WriteLine("File name cannot be empty.");
+        return;
+    }
+
+    try
+    {
+        // Map Contact -> ContactDto list
+        List<ContactDto> dtoList = new List<ContactDto>();
+        foreach (Contact c in Contacts)
+        {
+            if (c == null) continue;
+
+            dtoList.Add(new ContactDto
+            {
+                FirstName = c.GetFirstName(),
+                LastName  = c.GetLastName(),
+                Address   = c.GetAddress(),
+                City      = c.GetCity(),
+                State     = c.GetState(),
+                Zip       = c.GetZip(),
+                Phone     = c.GetPhoneNumber(),
+                Email     = c.GetEmail()
+            });
+        }
+
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true
+        };
+
+        string json = JsonSerializer.Serialize(dtoList, options);
+        File.WriteAllText(fileName, json);
+
+        Console.WriteLine("Contacts saved to JSON file '" + fileName + "'.");
+    }
+    catch (Exception ex)
+    {
+        throw new AddressBookException("Error writing JSON file: " + ex.Message, ex);
+    }
+}
+
+public void ReadFromJsonFile()
+{
+    Console.Write("Enter JSON file name to load (e.g., addressbook.json): ");
+    string fileName = Console.ReadLine();
+
+    if (string.IsNullOrWhiteSpace(fileName))
+    {
+        Console.WriteLine("File name cannot be empty.");
+        return;
+    }
+
+    if (!File.Exists(fileName))
+    {
+        Console.WriteLine("JSON file '" + fileName + "' does not exist.");
+        return;
+    }
+
+    try
+    {
+        string json = File.ReadAllText(fileName);
+
+        List<ContactDto> dtoList =
+            JsonSerializer.Deserialize<List<ContactDto>>(json);
+
+        Contacts.Clear();
+
+        if (dtoList != null)
+        {
+            foreach (ContactDto dto in dtoList)
+            {
+                Contact c = new Contact();
+                c.SetFirstName(dto.FirstName);
+                c.SetLastName(dto.LastName);
+                c.SetAddress(dto.Address);
+                c.SetCity(dto.City);
+                c.SetState(dto.State);
+                c.SetZip(dto.Zip);
+                c.SetPhoneNumber(dto.Phone);
+                c.SetEmail(dto.Email);
+
+                Contacts.Add(c);
+            }
+        }
+
+        Console.WriteLine("Contacts loaded from JSON file '" + fileName + "'.");
+    }
+    catch (Exception ex)
+    {
+        throw new AddressBookException("Error reading JSON file: " + ex.Message, ex);
+    }
+}
 }
