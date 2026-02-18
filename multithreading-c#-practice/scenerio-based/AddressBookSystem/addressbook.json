@@ -1,0 +1,22 @@
+[
+  {
+    "FirstName": "John",
+    "LastName": "Doe",
+    "Address": "123 Main Street",
+    "City": "Mumbai",
+    "State": "Maharashtra",
+    "Zip": "400001",
+    "Phone": "9876543210",
+    "Email": "john.doe@example.com"
+  },
+  {
+    "FirstName": "Jane",
+    "LastName": "Smith",
+    "Address": "45 Park Avenue",
+    "City": "Pune",
+    "State": "Maharashtra",
+    "Zip": "411001",
+    "Phone": "9123456789",
+    "Email": "jane.smith@example.com"
+  }
+]
