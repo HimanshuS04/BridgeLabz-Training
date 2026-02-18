@@ -26,7 +26,9 @@ public class AddressBookMenu
             Console.WriteLine("12. Sort Contacts by Name (Current Address Book)");
             Console.WriteLine("13. Save Current Address Book to File");
             Console.WriteLine("14. Load Current Address Book from File");
-            Console.WriteLine("15. Exit");
+            Console.WriteLine("15. Save Current Address Book to CSV File");
+            Console.WriteLine("16. Load Current Address Book from CSV File");
+            Console.WriteLine("17. Exit");
             Console.Write("Enter your choice: ");
 
             string input = Console.ReadLine();
@@ -122,6 +124,16 @@ public class AddressBookMenu
                         Manager.GetCurrentAddressBook().ReadFromFile();
                         break;
                     case 15:
+                        if (!Manager.IsAddressBookSelected()) break;
+                        Manager.GetCurrentAddressBook().WriteToCsvFile();
+                        break;
+
+                    case 16:
+                        if (!Manager.IsAddressBookSelected()) break;
+                        Manager.GetCurrentAddressBook().ReadFromCsvFile();
+                        break;
+
+                    case 17:
                         Console.WriteLine("Exiting Address Book System. Goodbye.");
                         exit = true;
                         break;

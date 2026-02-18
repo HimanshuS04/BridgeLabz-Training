@@ -504,4 +504,120 @@ public class AddressBookUtilityImpl : IAddressBook
             throw new AddressBookException("Error reading from file: " + ex.Message, ex);
         }
     }
+     public void WriteToCsvFile()
+    {
+        if (Contacts.Count == 0)
+        {
+            Console.WriteLine("No contacts in this Address Book to save.");
+            return;
+        }
+
+        Console.Write("Enter CSV file name to save (e.g., addressbook.csv): ");
+        string fileName = Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(fileName))
+        {
+            Console.WriteLine("File name cannot be empty.");
+            return;
+        }
+
+        try
+        {
+            using (StreamWriter writer = new StreamWriter(fileName))
+            {
+                // Optional header row
+                writer.WriteLine("FirstName,LastName,Address,City,State,Zip,Phone,Email");
+
+                foreach (Contact c in Contacts)
+                {
+                    if (c == null) continue;
+
+                    string line = string.Join(",", new string[]
+                    {
+                        c.GetFirstName() ?? "",
+                        c.GetLastName() ?? "",
+                        c.GetAddress() ?? "",
+                        c.GetCity() ?? "",
+                        c.GetState() ?? "",
+                        c.GetZip() ?? "",
+                        c.GetPhoneNumber() ?? "",
+                        c.GetEmail() ?? ""
+                    });
+
+                    writer.WriteLine(line);
+                }
+            }
+
+            Console.WriteLine("Contacts saved to CSV file '" + fileName + "'.");
+        }
+        catch (Exception ex)
+        {
+            throw new AddressBookException("Error writing CSV file: " + ex.Message, ex);
+        }
+    }
+
+    public void ReadFromCsvFile()
+    {
+        Console.Write("Enter CSV file name to load  ");
+        string fileName = Console.ReadLine();
+
+        if (string.IsNullOrWhiteSpace(fileName))
+        {
+            Console.WriteLine("File name cannot be empty.");
+            return;
+        }
+
+        if (!File.Exists(fileName))
+        {
+            Console.WriteLine("CSV file '" + fileName + "' does not exist.");
+            return;
+        }
+
+        try
+        {
+            string[] lines = File.ReadAllLines(fileName);
+            Contacts.Clear();
+
+            bool isFirstLine = true;
+            foreach (string line in lines)
+            {
+                if (string.IsNullOrWhiteSpace(line))
+                {
+                    continue;
+                }
+
+                // Skip header if present
+                if (isFirstLine && line.StartsWith("FirstName", StringComparison.OrdinalIgnoreCase))
+                {
+                    isFirstLine = false;
+                    continue;
+                }
+                isFirstLine = false;
+
+                string[] parts = line.Split(',');
+                if (parts.Length < 8)
+                {
+                    continue;
+                }
+
+                Contact c = new Contact();
+                c.SetFirstName(parts[0]);
+                c.SetLastName(parts[1]);
+                c.SetAddress(parts[2]);
+                c.SetCity(parts[3]);
+                c.SetState(parts[4]);
+                c.SetZip(parts[5]);
+                c.SetPhoneNumber(parts[6]);
+                c.SetEmail(parts[7]);
+
+                Contacts.Add(c);
+            }
+
+            Console.WriteLine("Contacts loaded from CSV file '" + fileName + "'.");
+        }
+        catch (Exception ex)
+        {
+            throw new AddressBookException("Error reading CSV file: " + ex.Message, ex);
+        }
+    }
 }

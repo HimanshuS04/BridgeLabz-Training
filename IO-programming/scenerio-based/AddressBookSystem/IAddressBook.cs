@@ -13,7 +13,8 @@ public interface IAddressBook
     void CountPersonsByState();
 
     void SortContactsByName();
-     // NEW: File I/O methods
-    void WriteToFile();   // Save this Address Book's contacts to a file
-    void ReadFromFile();  // Load contacts from a file into this Address Book
+    void WriteToFile();   
+    void ReadFromFile();  
+     void WriteToCsvFile();
+    void ReadFromCsvFile();
 }
