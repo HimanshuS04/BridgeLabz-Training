@@ -13,12 +13,4 @@ public interface IAddressBook
     void CountPersonsByState();
 
     void SortContactsByName();
-    Task WriteToFileAsync();
-    Task ReadFromFileAsync();
-
-    Task WriteToCsvFileAsync();
-    Task ReadFromCsvFileAsync();
-
-    Task WriteToJsonFileAsync();
-    Task ReadFromJsonFileAsync();
 }

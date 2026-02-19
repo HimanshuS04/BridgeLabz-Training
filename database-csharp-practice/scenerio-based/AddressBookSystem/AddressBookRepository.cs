@@ -19,9 +19,9 @@ public class AddressBookRepository
             conn.Open();
 
             string sql = @"
-INSERT INTO AddressBooks (Name, Description)
-OUTPUT INSERTED.AddressBookId
-VALUES (@Name, @Description);";
+            INSERT INTO AddressBooks (Name, Description)
+            OUTPUT INSERTED.AddressBookId
+            VALUES (@Name, @Description);";
 
             using (SqlCommand cmd = new SqlCommand(sql, conn))
             {

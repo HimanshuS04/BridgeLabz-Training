@@ -1,11 +1,12 @@
 using System;
-using System.Threading.Tasks;
+
 public class AddressBookMain
 {
-    public static async Task Main(string[] args)
+    public static void Main(string[] args)
     {
-        Console.WriteLine("Welcome to address book system");
-            AddressBookMenu menu = new AddressBookMenu();
-            await menu.ShowMenuAsync();
+        Console.WriteLine("Welcome to Address Book System ");
+
+        AddressBookMenu menu = new AddressBookMenu();
+        menu.ShowMenu();
     }
 }
